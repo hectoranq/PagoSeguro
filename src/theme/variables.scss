@@ -1,0 +1,44 @@
+$color-gray-dark : #5c5c5c;
+$color-gray-light: #e2e2e2;
+$color-gray-light-more: #fafafa;
+$color-gray-light: #ffffff;
+$color-gray: #8c8c8c;
+$color-light-magenta: #ced6e0;
+$color-primary : #000000;
+$color-secondary : #F83758;
+
+$color-red : rgb(231, 69, 69);
+$color-green: rgb(58, 149, 58);
+$color-blue: rgb(42, 59, 137);
+$color-yellow: rgb(209, 209, 36);
+$color-orange: rgb(243, 147, 20);
+$color-light-red : rgb(229, 195, 195);
+$color-light-green: rgb(194, 223, 194);
+$color-light-blue: rgb(210, 216, 243);
+$color-light-yellow: rgb(239, 239, 158);
+$color-light-orange: rgb(251, 239, 208);
+
+$color-gradient: linear-gradient(136deg, $color-secondary 10%, $color-secondary 86%);
+$color-gradient-1: linear-gradient(136deg, $color-secondary 10%, $color-primary 86%);
+
+
+
+.t-primary {
+    color: $color-primary;
+}
+
+.t-secondary {
+    color: $color-secondary;
+}
+
+.t-yellow {
+    color: rgb(242, 190, 33);
+}
+
+.t-red {
+    color: rgb(232, 59, 59);
+}
+
+.t-green {
+    color: rgb(43, 154, 41);
+}

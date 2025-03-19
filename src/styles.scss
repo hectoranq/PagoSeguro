@@ -1,0 +1,537 @@
+@use "@angular/material" as mat;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+// @import "@angular/material/theming";
+@import "theme/typography.scss";
+@import "theme/variables.scss";
+
+// TODO: Corregir la carga constante de los tipos de fuentes al redimensionar
+@include mat.core();
+
+$base-font-size: 1.2rem;
+
+// Material typography
+$my-typography: mat.define-typography-config(
+  $font-family: Montserrat,
+  $headline-1: mat.define-typography-level(32px, 48px, 700),
+  $body-1: mat.define-typography-level($base-font-size, 24px, 500),
+);
+
+// Paletas
+$my-palette-primary: mat.define-palette(mat.$grey-palette);
+$my-palette-accent: mat.define-palette(mat.$grey-palette);
+$my-palette-warn: mat.define-palette(mat.$red-palette);
+
+// Tema
+$my-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $my-palette-primary,
+      accent: $my-palette-accent,
+      warn: $my-palette-warn,
+    ),
+    typography: $my-typography,
+    density: 0,
+  )
+);
+
+// Aplicacion del tema
+//@include angular-material-theme($my-theme);
+@include mat.all-component-themes($my-theme);
+
+// Mat custom styles
+
+mat-button-toggle-group {
+  &.mat-button-toggle-group-appearance-standard {
+    height: 2.6rem;
+    border-radius: 3rem;
+    border-color: $color-secondary;
+  }
+
+  mat-button-toggle {
+    display: flex;
+    margin: 4px;
+    border-radius: 14px;
+
+    &.mat-button-toggle-checked {
+      background-color: $color-secondary;
+      color: white !important;
+    }
+
+    button {
+      text-transform: uppercase;
+    }
+  }
+}
+
+mat-tab-group {
+  & .mat-mdc-tab.mdc-tab {
+    font-size: 1.75rem;
+    text-transform: uppercase;
+    @extend .t-bold;
+  }
+}
+
+mat-select {
+  & .mat-mdc-select-value {
+    color: $color-gray-dark;
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+}
+
+.mat-drawer-container {
+  background-color: white;
+}
+
+.mat-icon-button {
+  display: flex !important;
+  align-items: center;
+}
+
+.mat-paginator,
+.mat-mdc-paginator-container {
+  font-size: 0.85rem;
+  font-weight: 200;
+  color: $color-gray-dark;
+}
+
+.mat-select-disabled {
+  // background: $color-gray-light;
+  background: $color-gray-light;
+  color: $color-gray-dark;
+  border-color: $color-gray-dark;
+}
+
+.mat-select-search-input {
+  font-family: "Montserrat" !important;
+  font-weight: 200;
+  text-transform: uppercase;
+}
+
+.mat-toolbar {
+  background-color: white;
+  border-bottom: 1px solid $color-gray-light;
+}
+
+:root {
+  .app-full-dialog {
+    overflow-y: auto;
+  }
+
+  .mat-dialog-container {
+    border-radius: 20px;
+    padding: 0.5rem;
+  }
+
+  .mdc-tab {
+    font-size: 1.6rem;
+    letter-spacing: 0px;
+  }
+
+  .mdc-tab-indicator__content--underline {
+    border-color: $color-secondary !important;
+  }
+}
+
+th.mat-header-cell:first-of-type,
+td.mat-cell:first-of-type,
+td.mat-footer-cell:first-of-type {
+  padding-left: 0;
+}
+
+/* Global styles */
+* {
+  font-family: "Montserrat";
+}
+
+a {
+  color: $color-secondary;
+  cursor: pointer;
+}
+
+:root {
+  body {
+    background-color: white;
+    color: $color-gray-dark;
+    font-family: "Montserrat";
+    font-size: $base-font-size;
+    font-weight: 200;
+    line-height: 1.4;
+  }
+}
+
+h1 {
+  color: $color-primary;
+  line-height: 2.5;
+  position: relative;
+  @extend .t-bold;
+}
+
+h2 {
+  color: $color-secondary;
+  font-size: 1.75rem;
+  padding-left: 1.1rem;
+  position: relative;
+  text-transform: uppercase;
+  @extend .t-bold;
+
+  &:before {
+    content: " ";
+    background-color: $color-primary;
+    height: 1.55rem;
+    left: 0rem;
+    position: absolute;
+    top: 8px;
+    width: 0.6rem;
+  }
+}
+
+h3 {
+  font-size: 1.8rem;
+  color: $color-primary;
+  line-height: 1.1;
+  text-transform: uppercase;
+  @extend .t-regular;
+}
+
+h4 {
+  font-size: 1.4rem;
+  color: $color-gray-dark;
+  text-transform: uppercase;
+}
+
+hr {
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+input[type="email"] {
+  text-transform: unset;
+}
+
+label {
+  color: $color-secondary;
+  font-weight: 400;
+  font-size: 1rem;
+  margin-left: 1rem;
+}
+
+p {
+  color: $color-gray-dark;
+  font-weight: 400;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+span {
+  line-height: normal !important;
+}
+
+strong {
+  @extend .t-bold;
+  color: $color-primary;
+}
+
+/* Global Classes */
+
+.app-full-dialog {
+  max-width: 700px;
+  width: min-content;
+}
+
+.banner {
+  align-items: center;
+  background: var(--fie-color-very-light-gray);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  padding: 20px;
+}
+
+.button-gradient {
+  @extend .t-light;
+  background-image: $color-gradient;
+  border-radius: 5px;
+  border-width: 0;
+  color: $color-gray-light;
+  font-weight: bold;
+  padding: 12px 109px;
+  text-align: center;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+
+  &:disabled {
+    filter: opacity(0.5);
+  }
+}
+
+.button-util{
+
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.filler {
+  flex: 1 1 auto;
+}
+
+.full {
+  width: 100%;
+  height: 100%;
+}
+
+.icon-gradient {
+  background-image: linear-gradient(to right, $color-primary, $color-secondary);
+}
+
+.icon-mask {
+  display: inline-block;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.rounded-box {
+  border-color: $color-secondary;
+  border-radius: 2rem;
+  border-style: solid;
+  border-width: 1px;
+  height: 2.5rem;
+  padding: 0.32rem 1rem;
+  color: $color-gray-dark;
+  font-size: 1.2rem;
+  font-weight: 200;
+
+  &:focus-visible,
+  &:focus {
+    border: 2px solid $color-secondary;
+    outline: none;
+  }
+
+  &[readonly],
+  &[disabled],
+  &[aria-disabled="true"] {
+    background: $color-gray-light;
+    color: $color-gray-dark;
+    border-color: $color-gray-dark;
+  }
+}
+
+.table-a,
+.table-b,
+.table-c {
+  & th {
+    background-color: $color-gray-light;
+    color: $color-secondary;
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 0 0.5rem;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  & tr {
+    border-bottom: 1px solid $color-gray-light;
+  }
+
+  & td {
+    padding: 0 0.5rem;
+    font-size: 1rem;
+    color: $color-gray-dark;
+    font-weight: 200;
+  }
+
+  & tfoot>tr>td {
+    color: $color-secondary;
+  }
+}
+
+.table-b {
+  & th,
+  & td {
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+}
+
+.table-c {
+  & th,
+  & td {
+    padding: 0.5rem;
+    font-size: 22px;
+    font-weight: 200;
+
+    &:not(:first-of-type) {
+      border-left: 1px solid $color-gray-light;
+    }
+  }
+}
+
+.table-input {
+  width: 100%;
+  border: none;
+  appearance: none;
+  outline: none;
+}
+
+.text-gradient {
+  background: linear-gradient(to right, $color-primary, $color-secondary);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.topbar {
+  font-size: 1rem;
+}
+
+.val-errors {
+  background-color: $color-light-yellow;
+  color: black;
+  padding: 0.1rem 1rem;
+  border-radius: 10px;
+  margin-top: 8px;
+  position: relative;
+  width: fit-content;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    width: 0;
+    border-bottom: 10px solid $color-light-yellow;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+  }
+}
+
+.work-area {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.filled {
+  // material symbols
+  font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 48;
+}
+
+.mat-mdc-snack-bar-container {
+  --mat-mdc-snack-bar-button-color: #e2e2e2;
+  --mdc-snackbar-container-color: #e91c89;
+  --mdc-snackbar-supporting-text-color: white;
+  --mdc-snackbar-supporting-text-font: Montserrat;
+  --mdc-snackbar-supporting-text-line-height: 20px;
+  --mdc-snackbar-supporting-text-size: 1.2rem;
+  --mdc-snackbar-supporting-text-weight: 400;
+}
+
+.mat-mdc-radio-button.mat-accent {
+  --mdc-radio-selected-icon-color: #e91c89;
+}
+
+.mat-mdc-checkbox.mat-accent {
+  --mdc-checkbox-selected-checkmark-color: #fff;
+  --mdc-checkbox-selected-icon-color: #e91c89;
+  --mdc-checkbox-selected-hover-icon-color: #e91c89;
+}
+
+.mat-mdc-slide-toggle.mat-accent {
+  --mdc-switch-selected-handle-color: #e91c89;
+  --mdc-switch-selected-focus-handle-color: #e91c89;
+  --mdc-switch-selected-hover-handle-color: #e91c89;
+}
+
+.mdc-form-field > label {
+  color: $color-gray-dark;
+}
+
+:root {
+  .ng-select-container {
+    height: 100%;
+  }
+
+  .ng-input {
+    top: 2px;
+
+    & input {
+      text-transform: uppercase;
+    }
+  }
+
+  .my-dropdown-panel {
+    top: 32px;
+  }
+
+  .ng-select.rounded-box .ng-dropdown-panel-items {
+    background: white;
+    padding: 0.5rem;
+    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2),
+      0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+    border-radius: 0.5rem;
+  }
+
+  .ng-value-container {
+    position: relative;
+  }
+
+  .ng-option {
+    padding: 0.4rem;
+  }
+
+  .ng-option-marked {
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  .ng-value {
+    margin-top: 2px;
+  }
+
+  .ng-select .ng-clear-wrapper .ng-clear {
+    font-size: 24px;
+    color: #a5a5a5;
+  }
+
+  .ng-option-selected {
+    background: #c1d0eb;
+  }
+
+  .ng-select-disabled {
+    // background: #d5d5d5;
+    // background: $color-gray-light-more;
+    // color: $color-gray-dark;
+    // border-color: $color-gray-light;
+    background: $color-gray-light;
+    color: $color-gray-dark;
+    border-color: $color-gray-dark;
+  }
+
+  .ng-value-container {
+    gap: 8px;
+
+    & .ng-value-icon {
+      margin-right: 2px;
+    }
+  }
+}
+
+.rounded-result {
+  border-color: $color-secondary;
+  border-radius: 2rem;
+  border-style: solid;
+  border-width: 1px;
+  padding: 0.32rem 1rem;
+  color: $color-gray-dark;
+  font-size: 1.2rem;
+  font-weight: 200;
+
+}

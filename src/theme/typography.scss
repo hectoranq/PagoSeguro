@@ -1,0 +1,36 @@
+/* @font-face {
+    font-family: 'Roundkey';
+    src: url('../assets/fonts/Roundkey-Medium.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roundkey';
+    src: url('../assets/fonts/Roundkey-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roundkey';
+    src: url('../assets/fonts/Roundkey-Light.woff2') format('woff2');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+} */
+
+
+.t-light {
+    font-weight: 200;
+}
+
+.t-regular {
+    font-weight: 400;
+}
+
+.t-bold {
+    font-weight: 600;
+}
