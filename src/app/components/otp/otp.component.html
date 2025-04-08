@@ -1,0 +1,54 @@
+<div class=>
+    <div class="top-background fixed w-full"></div>
+  
+    <div class="w-full max-w-md p-6 flex flex-col roles-card ">
+    
+      <div class="relative w-full p-2">
+        <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+            <i class="material-icons">chevron_left</i>
+          </span>
+          
+        <h1 class="text-base flex justify-center">Verificación</h1>
+      </div>
+      <br />
+      <!-- aqui el submit -->
+
+      
+      <form  class="w-full flex flex-col gap-2">
+        <div>
+          <div class="flex justify-center">
+            <img src="../../../assets/images/otp-image.svg" alt="">
+          </div>
+
+          <br>
+
+          <div>
+            <h1>Verificación mediante código </h1>
+            <p>Enviamos un código  de verificación a su WhatsApp</p>
+          </div>
+          <div class="flex justify-center gap-2">
+            <input
+              *ngFor="let digit of otpArray; let i = index"
+              type="text"
+              maxlength="1"
+              class="w-[74px] h-[74px] text-center text-xl border rounded"
+              (input)="onInput($event, i)"
+              (keydown)="onKeyDown($event, i)"
+              #otpInput
+            />
+          </div>
+        </div>
+        <div class="text-sm text-gray-600 p-2">
+          <p>
+            No te llegó el mensaje ? <label class=" text-red-500 cursor-pointer">Reenviar código</label>
+          </p>
+        </div>
+        <button type="submit" class="button-gradient mt-2 w-full text-lg py-2 rounded-lg">
+          Confirmar
+        </button>
+      </form>
+      <br>
+      
+    </div>
+  </div>
+  

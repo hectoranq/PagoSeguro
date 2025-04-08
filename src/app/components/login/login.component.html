@@ -3,7 +3,7 @@
 
   <div class="w-full max-w-md p-6 rounded-lg shadow-md flex flex-col items-center roles-card bg-white">
     <div class="">
-      <h1>Bienvenido a Pago Seguro!</h1>
+      <h1 class="text-4xl">Bienvenido a Pago Seguro!</h1>
     </div>
     <br />
     <form [formGroup]="form" (submit)="doLogin()" class="w-full flex flex-col gap-2">
@@ -30,7 +30,7 @@
             formControlName="password"
           />
         </div>
-        <div class="flex justify-end text-sm pt-2">
+        <div class="flex justify-end text-sm pt-2" (click)="changePassword()">
           <label class="text-red-600 cursor-pointer">Olvidaste tu contraseña?</label>
         </div>
       </div>
@@ -41,7 +41,7 @@
       <div class="flex justify-center items-center pt-4 text-sm">
         <p>
           ¿Crear una cuenta? 
-          <label class="text-red-600 cursor-pointer">Registrarse</label>
+          <label class="text-red-600 cursor-pointer" (click)="doRegister()">Registrarse</label>
         </p>
       </div>
     </form>
