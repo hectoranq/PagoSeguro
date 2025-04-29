@@ -1,49 +1,85 @@
-<div class="work-area mat-app-background min-h-screen flex flex-col items-center justify-center px-4">
+<div
+  class="work-area mat-app-background min-h-screen flex flex-col items-center justify-center px-4"
+>
   <div class="top-background h-10 fixed w-full"></div>
 
-  <div class="w-full max-w-md p-6 rounded-lg shadow-md flex flex-col items-center roles-card bg-white">
-    <div class="">
+  <div
+    class="w-full max-w-md p-6 rounded-lg shadow-md flex flex-col items-center roles-card bg-white"
+  >
+    <div class="" *ngIf="!isLoading">
       <h1 class="text-4xl">Bienvenido a Pago Seguro!</h1>
     </div>
     <br />
-    <form [formGroup]="form" (submit)="doLogin()" class="w-full flex flex-col gap-2">
-      <div>
-        <div class="relative w-full p-2">
-          <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
-            <i class="material-icons">person</i>
-          </span>
-          <input
-            type="text"
-            placeholder="Ingrese su número"
-            class="w-full pl-10 pr-4 py-2 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700 placeholder-gray-500"
-            formControlName="username"
-          />
-        </div>
-        <div class="relative w-full p-2">
-          <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
-            <i class="material-icons">lock</i>
-          </span>
-          <input
-            type="password"
-            placeholder="Contraseña"
-            class="w-full pl-10 pr-4 py-2 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700 placeholder-gray-500"
-            formControlName="password"
-          />
-        </div>
-        <div class="flex justify-end text-sm pt-2" (click)="changePassword()">
-          <label class="text-red-600 cursor-pointer">Olvidaste tu contraseña?</label>
+    <div *ngIf="isLoading" class="flex justify-center items-center h-full">
+      <!-- From Uiverse.io by SouravBandyopadhyay -->
+      <div class="hourglassBackground">
+        <div class="hourglassContainer">
+          <div class="hourglassCurves"></div>
+          <div class="hourglassCapTop"></div>
+          <div class="hourglassGlassTop"></div>
+          <div class="hourglassSand"></div>
+          <div class="hourglassSandStream"></div>
+          <div class="hourglassCapBottom"></div>
+          <div class="hourglassGlass"></div>
         </div>
       </div>
-      <br />
-      <button type="submit" class="button-gradient mt-2 w-full text-lg py-2 rounded-lg">
-        Ingresar
-      </button>
-      <div class="flex justify-center items-center pt-4 text-sm">
-        <p>
-          ¿Crear una cuenta? 
-          <label class="text-red-600 cursor-pointer" (click)="doRegister()">Registrarse</label>
-        </p>
-      </div>
-    </form>
+    </div>
+
+    <div *ngIf="!isLoading">
+      <form
+        [formGroup]="form"
+        (submit)="doLogin()"
+        class="w-full flex flex-col gap-2"
+      >
+        <div>
+          <div class="relative w-full p-2">
+            <span
+              class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+            >
+              <i class="material-icons">person</i>
+            </span>
+            <input
+              type="text"
+              placeholder="Ingrese su número"
+              class="w-full pl-10 pr-4 py-2 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700 placeholder-gray-500"
+              formControlName="username"
+            />
+          </div>
+          <div class="relative w-full p-2">
+            <span
+              class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+            >
+              <i class="material-icons">lock</i>
+            </span>
+            <input
+              type="password"
+              placeholder="Contraseña"
+              class="w-full pl-10 pr-4 py-2 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700 placeholder-gray-500"
+              formControlName="password"
+            />
+          </div>
+          <div class="flex justify-end text-sm pt-2" (click)="changePassword()">
+            <label class="text-red-600 cursor-pointer"
+              >Olvidaste tu contraseña?</label
+            >
+          </div>
+        </div>
+        <br />
+        <button
+          type="submit"
+          class="button-gradient mt-2 w-full text-lg py-2 rounded-lg"
+        >
+          Ingresar
+        </button>
+        <div class="flex justify-center items-center pt-4 text-sm">
+          <p>
+            ¿Crear una cuenta?
+            <label class="text-red-600 cursor-pointer" (click)="doRegister()"
+              >Registrarse</label
+            >
+          </p>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

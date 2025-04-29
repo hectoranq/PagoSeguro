@@ -13,6 +13,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatDividerModule } from '@angular/material/divider';
+import { LoginServiceService } from 'src/app/services/login-service.service';
+import { AuthResponse } from 'src/app/models/login/auth-response';
 
 @Component({
   selector: 'app-login',
@@ -41,12 +43,13 @@ export class LoginComponent {
     password: ['', [Validators.required]],
   });
   isVisible: boolean[] = [false, false];
+  isLoading: boolean = false;
 
   constructor(
     private router: Router,
-    private formBuilder: FormBuilder
-  ) 
-  {}
+    private formBuilder: FormBuilder,
+    private loginService: LoginServiceService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -54,14 +57,42 @@ export class LoginComponent {
     this.isVisible[id] = !this.isVisible[id];
   }
 
-  doLogin() {}
+  doLogin() {
+    this.isLoading = true; // Mostrar el spinner
+    const req = {
+      identity: this.form.value.username,
+      password: this.form.value.password,
+    };
 
-
-  doRegister() {
-    this.router.navigate(['/create-account'], { replaceUrl: true, state: { registerDevice: true } })
+    this.loginService.login(req).subscribe({
+      next: (resp: AuthResponse) => {
+        console.log(resp);
+        this.router.navigate(['/home'], {
+          replaceUrl: true,
+          state: { registerDevice: true },
+        });
+      },
+      error: (err) => {
+        console.log(err);
+        this.isLoading = false;
+      },
+      complete: () => {
+        this.isLoading = false; // Ocultar el spinner
+      },
+    });
   }
 
-  changePassword(){
-    this.router.navigate(['/change-password'], { replaceUrl: true, state: { registerDevice: true } })
+  doRegister() {
+    this.router.navigate(['/create-account'], {
+      replaceUrl: true,
+      state: { registerDevice: true },
+    });
+  }
+
+  changePassword() {
+    this.router.navigate(['/change-password'], {
+      replaceUrl: true,
+      state: { registerDevice: true },
+    });
   }
 }
