@@ -6,6 +6,8 @@ import { environment } from 'src/environments/environment';
 import { AuthRequest } from '../models/login/auth-request';
 import { AuthResponse } from '../models/login/auth-response';
 import Swal from 'sweetalert2';
+import { OAuthRequest } from '../models/login/oauth-request';
+import { ResponseOAuth2 } from '../models/login/response-oauth2';
 
 @Injectable({
   providedIn: 'root',
@@ -18,11 +20,20 @@ export class LoginServiceService {
   login(authRequest: AuthRequest): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(this.authEndpoint, authRequest).pipe(
       catchError((error) => {
-        //window.alert('Ocurrió un error al intentar iniciar sesión. Por favor, inténtelo de nuevo más tarde.');
         this.showInfoAlert();
         return throwError(() => error);
       })
     );
+  }
+
+  authWithCauth2(authRequest: OAuthRequest): Observable<ResponseOAuth2> {
+    return this.http.post<ResponseOAuth2>(this.authEndpoint, authRequest).pipe(
+      catchError((error) => {
+        this.showInfoAlert();
+        return throwError(() => error);
+      })
+    );
+
   }
 
   showInfoAlert(): void {
