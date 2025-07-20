@@ -80,7 +80,7 @@ export class CreateAccountComponent implements OnInit {
         console.log('Usuario registrado:', res);
         this.registerService.requestEmailVerification(data.email).subscribe({
           next: () => {
-            this.upload(); // Llamar a la función de carga del avatar
+            this.upload(res.id); // Llamar a la función de carga del avatar
           },
           error: (err) => {
             this.errorToast = 'No se pudo enviar el correo de verificación.';
@@ -105,7 +105,7 @@ export class CreateAccountComponent implements OnInit {
     }
   }
 
-  upload() {
+  upload(id: string) {
     if (!this.currentUser?.id) return;
 
     this.uploading = true;
@@ -123,7 +123,7 @@ export class CreateAccountComponent implements OnInit {
     }
 
     this.avatarService
-      .safeUploadAvatar(this.currentUser.id, this.avatarFile, metadata)
+      .safeUploadAvatar(id, this.avatarFile, metadata)
       .subscribe({
         next: (response) => {
           console.log('Avatar subido con éxito', response);
