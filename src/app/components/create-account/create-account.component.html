@@ -1,98 +1,121 @@
-<div class="w-full min-h-screen flex items-center justify-center bg-gray-100 p-4">
-    <div class="w-full max-w-lg p-6 rounded-lg shadow-lg bg-white">
-      <!-- Título -->
-      <div class="text-center mb-6">
-        <h1 class="text-3xl font-semibold text-gray-800">Crear una cuenta</h1>
+<div
+  class="w-full min-h-screen flex items-center justify-center bg-gray-100 p-4"
+>
+  <div class="w-full max-w-lg p-6 rounded-lg shadow-lg bg-white">
+    <!-- Título -->
+    <div class="text-center mb-6">
+      <h1 class="text-3xl font-semibold text-gray-800">Crear una cuenta</h1>
+    </div>
+
+    <!-- Formulario -->
+    <form [formGroup]="createAccountForm" (ngSubmit)="onSubmit()" class="flex flex-col gap-4">
+      <div class="relative flex justify-center text-center">
+        <div
+          class="w-48 rounded-lg bg-gray-200 border border-gray-300 flex flex-col justify-center items-center p-4"
+        >
+          <img
+            src="../../../assets/images/user_profile.png"
+            alt=""
+            class="w-16 h-auto flex justify-center"
+          />
+          <label for="" class="flex justify-center"
+            >Cargar foto de perfil</label
+          >
+        </div>
       </div>
 
-      
-  
-      <!-- Formulario -->
-      <form class="flex flex-col gap-4">
-
-        <div class="relative flex justify-center text-center">
-          <div class="w-48 rounded-lg bg-gray-200 border border-gray-300 flex flex-col justify-center items-center p-4">
-            <img src="../../../assets/images/user_profile.png" alt="" class="w-16 h-auto flex justify-center">
-            <label for="" class="flex justify-center">Cargar foto de perfil</label>
-          </div>
-        </div>
-        
-        <!-- Usuario -->
-        <div class="relative">
-          <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
-            <i class="material-icons">person</i>
-          </span>
-          <input
-            type="text"
-            placeholder="Nombre de usuario"
-            class="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-  
-        <!-- Celular -->
-        <div class="relative">
-          <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
-            <i class="material-icons">phone</i>
-          </span>
-          <input
-            type="text"
-            placeholder="Número de celular"
-            class="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-  
-        <!-- Correo -->
-        <div class="relative">
-          <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
-            <i class="material-icons">mail</i>
-          </span>
-          <input
-            type="email"
-            placeholder="Correo electrónico"
-            class="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-  
-        <!-- Contraseña -->
-        <div class="relative">
-          <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
-            <i class="material-icons">lock</i>
-          </span>
-          <input
-            type="password"
-            placeholder="Contraseña"
-            class="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-  
-        <!-- Confirmar contraseña -->
-        <div class="relative">
-          <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
-            <i class="material-icons">lock</i>
-          </span>
-          <input
-            type="password"
-            placeholder="Confirmar contraseña"
-            class="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-  
-        <!-- Términos y condiciones -->
-        <div class="text-sm text-gray-600">
-          <p>
-            Al presionar crear cuenta, estás de acuerdo con los
-            <label class="text-red-500 cursor-pointer">términos y condiciones</label>.
-          </p>
-        </div>
-  
-        <!-- Botón de Crear cuenta -->
-        <button
-          type="submit"
-          class="w-full py-3 text-lg font-semibold text-white bg-red-500 rounded-lg hover:bg-red-600 transition duration-300"
+      <!-- Usuario -->
+      <div class="relative">
+        <span
+          class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"
         >
-          Crear cuenta
-        </button>
-      </form>
-    </div>
+          <i class="material-icons">person</i>
+        </span>
+        <input
+          type="text"
+          placeholder="Nombre de usuario"
+          formControlName="username"
+          class="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <!-- Celular -->
+      <div class="relative">
+        <span
+          class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+        >
+          <i class="material-icons">smartphone</i>
+        </span>
+        <input
+          type="text"
+          placeholder="Número de celular"
+          formControlName="phone"
+          class="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <!-- Correo -->
+      <div class="relative">
+        <span
+          class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+        >
+          <i class="material-icons">mail</i>
+        </span>
+        <input
+          type="email"
+          placeholder="Correo electrónico"
+          formControlName="email"
+          class="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <!-- Contraseña -->
+      <div class="relative">
+        <span
+          class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+        >
+          <i class="material-icons">lock</i>
+        </span>
+        <input
+          type="password"
+          placeholder="Contraseña"
+          formControlName="password"
+          class="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <!-- Confirmar contraseña -->
+      <div class="relative">
+        <span
+          class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+        >
+          <i class="material-icons">lock</i>
+        </span>
+        <input
+          type="password"
+          placeholder="Confirmar contraseña"
+          formControlName="confirmPassword"
+          class="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <!-- Términos y condiciones y botón igual que antes -->
+      <div class="text-sm text-gray-600">
+        <p>
+          Al presionar crear cuenta, estás de acuerdo con los
+          <label class="text-red-500 cursor-pointer"
+            >términos y condiciones</label
+          >.
+        </p>
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="createAccountForm.invalid"
+        class="w-full py-3 text-lg font-semibold text-white bg-red-500 rounded-lg hover:bg-red-600 transition duration-300"
+      >
+        Crear cuenta
+      </button>
+    </form>
   </div>
-  
+</div>
