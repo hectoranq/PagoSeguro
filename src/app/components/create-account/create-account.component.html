@@ -8,14 +8,37 @@
       
   
       <!-- Formulario -->
-      <form class="flex flex-col gap-4">
+      <form class="flex flex-col gap-4" (ngSubmit)="crearCuenta()">
 
         <div class="relative flex justify-center text-center">
-          <div class="w-48 rounded-lg bg-gray-200 border border-gray-300 flex flex-col justify-center items-center p-4">
-            <img src="../../../assets/images/user_profile.png" alt="" class="w-16 h-auto flex justify-center">
-            <label for="" class="flex justify-center">Cargar foto de perfil</label>
+        <div
+          class="w-48 rounded-lg bg-gray-200 border border-gray-300 flex flex-col justify-center items-center p-4"
+        >
+          <img
+            [src]="avatarPreview || '../../../assets/images/user_profile.png'"
+            alt="Avatar"
+            class="w-16 h-auto flex justify-center mb-2"
+          />
+          <label class="flex justify-center cursor-pointer">
+            Cargar foto de perfil
+            <input
+              #fileInput
+              type="file"
+              accept="image/*"
+              (change)="onAvatarSelected($event)"
+              hidden
+            />
+          </label>
+          <div *ngIf="uploadProgress > 0 && uploading" class="w-full mt-2">
+            <progress
+              [value]="uploadProgress"
+              max="100"
+              class="w-full"
+            ></progress>
+            <span>{{ uploadProgress }}%</span>
           </div>
         </div>
+      </div>
         
         <!-- Usuario -->
         <div class="relative">
@@ -26,6 +49,9 @@
             type="text"
             placeholder="Nombre de usuario"
             class="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            [(ngModel)]="username"
+            name="username"
+            required
           />
         </div>
   
@@ -38,6 +64,9 @@
             type="text"
             placeholder="Número de celular"
             class="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            [(ngModel)]="phone"
+            name="phone"
+            required
           />
         </div>
   
@@ -50,6 +79,9 @@
             type="email"
             placeholder="Correo electrónico"
             class="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            [(ngModel)]="email"
+            name="email"
+            required
           />
         </div>
   
@@ -62,6 +94,9 @@
             type="password"
             placeholder="Contraseña"
             class="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            [(ngModel)]="password"
+            name="password"
+            required
           />
         </div>
   
@@ -74,6 +109,9 @@
             type="password"
             placeholder="Confirmar contraseña"
             class="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            [(ngModel)]="passwordConfirm"
+            name="passwordConfirm"
+            required
           />
         </div>
   
@@ -95,4 +133,30 @@
       </form>
     </div>
   </div>
-  
+
+  <!-- Toast de error, fuera del contenedor principal -->
+<div
+  *ngIf="errorToast"
+  id="toast-danger"
+  class="fixed top-6 right-6 z-50 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow-lg dark:text-gray-400 dark:bg-gray-800"
+  role="alert"
+>
+  <div class="inline-flex items-center justify-center shrink-0 w-8 h-8 text-red-500 bg-red-100 rounded-lg dark:bg-red-800 dark:text-red-200">
+    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 11.793a1 1 0 1 1-1.414 1.414L10 11.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L8.586 10 6.293 7.707a1 1 0 0 1 1.414-1.414L10 8.586l2.293-2.293a1 1 0 0 1 1.414 1.414L11.414 10l2.293 2.293Z"/>
+    </svg>
+    <span class="sr-only">Error icon</span>
+  </div>
+  <div class="ms-3 text-sm font-normal">{{ errorToast }}</div>
+  <button
+    type="button"
+    class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+    (click)="errorToast = ''"
+    aria-label="Close"
+  >
+    <span class="sr-only">Close</span>
+    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+    </svg>
+  </button>
+</div>
