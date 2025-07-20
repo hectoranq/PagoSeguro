@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class AvatarServiceService {
-  private readonly baseUrl = `${environment.authWithPassword}avatars/records`;
+  private readonly baseUrl = `${environment.authWithPassword}/avatars/records`;
 
   constructor(private http: HttpClient) {}
 

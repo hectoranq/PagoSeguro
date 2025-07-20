@@ -1,15 +1,16 @@
-<div
-  class="w-full min-h-screen flex items-center justify-center bg-gray-100 p-4"
->
-  <div class="w-full max-w-lg p-6 rounded-lg shadow-lg bg-white">
-    <!-- Título -->
-    <div class="text-center mb-6">
-      <h1 class="text-3xl font-semibold text-gray-800">Crear una cuenta</h1>
-    </div>
+<div class="w-full min-h-screen flex items-center justify-center bg-gray-100 p-4">
+    <div class="w-full max-w-lg p-6 rounded-lg shadow-lg bg-white">
+      <!-- Título -->
+      <div class="text-center mb-6">
+        <h1 class="text-3xl font-semibold text-gray-800">Crear una cuenta</h1>
+      </div>
 
-    <!-- Formulario -->
-    <form class="flex flex-col gap-4">
-      <div class="relative flex justify-center text-center">
+      
+  
+      <!-- Formulario -->
+      <form class="flex flex-col gap-4" (ngSubmit)="crearCuenta()">
+
+        <div class="relative flex justify-center text-center">
         <div
           class="w-48 rounded-lg bg-gray-200 border border-gray-300 flex flex-col justify-center items-center p-4"
         >
@@ -28,14 +29,6 @@
               hidden
             />
           </label>
-          <button
-            type="button"
-            class="mt-2 px-4 py-1 bg-blue-600 text-white rounded hover:bg-blue-700"
-            (click)="upload()"
-            [disabled]="!avatarFile || uploading"
-          >
-            {{ uploading ? "Subiendo..." : "Subir foto" }}
-          </button>
           <div *ngIf="uploadProgress > 0 && uploading" class="w-full mt-2">
             <progress
               [value]="uploadProgress"
@@ -46,94 +39,124 @@
           </div>
         </div>
       </div>
-
-      <!-- Usuario -->
-      <div class="relative">
-        <span
-          class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+        
+        <!-- Usuario -->
+        <div class="relative">
+          <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+            <i class="material-icons">person</i>
+          </span>
+          <input
+            type="text"
+            placeholder="Nombre de usuario"
+            class="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            [(ngModel)]="username"
+            name="username"
+            required
+          />
+        </div>
+  
+        <!-- Celular -->
+        <div class="relative">
+          <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+            <i class="material-icons">phone</i>
+          </span>
+          <input
+            type="text"
+            placeholder="Número de celular"
+            class="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            [(ngModel)]="phone"
+            name="phone"
+            required
+          />
+        </div>
+  
+        <!-- Correo -->
+        <div class="relative">
+          <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+            <i class="material-icons">mail</i>
+          </span>
+          <input
+            type="email"
+            placeholder="Correo electrónico"
+            class="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            [(ngModel)]="email"
+            name="email"
+            required
+          />
+        </div>
+  
+        <!-- Contraseña -->
+        <div class="relative">
+          <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+            <i class="material-icons">lock</i>
+          </span>
+          <input
+            type="password"
+            placeholder="Contraseña"
+            class="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            [(ngModel)]="password"
+            name="password"
+            required
+          />
+        </div>
+  
+        <!-- Confirmar contraseña -->
+        <div class="relative">
+          <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+            <i class="material-icons">lock</i>
+          </span>
+          <input
+            type="password"
+            placeholder="Confirmar contraseña"
+            class="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            [(ngModel)]="passwordConfirm"
+            name="passwordConfirm"
+            required
+          />
+        </div>
+  
+        <!-- Términos y condiciones -->
+        <div class="text-sm text-gray-600">
+          <p>
+            Al presionar crear cuenta, estás de acuerdo con los
+            <label class="text-red-500 cursor-pointer">términos y condiciones</label>.
+          </p>
+        </div>
+  
+        <!-- Botón de Crear cuenta -->
+        <button
+          type="submit"
+          class="w-full py-3 text-lg font-semibold text-white bg-red-500 rounded-lg hover:bg-red-600 transition duration-300"
         >
-          <i class="material-icons">person</i>
-        </span>
-        <input
-          type="text"
-          placeholder="Nombre de usuario"
-          class="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-      </div>
-
-      <!-- Celular -->
-      <div class="relative">
-        <span
-          class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"
-        >
-          <i class="material-icons">phone</i>
-        </span>
-        <input
-          type="text"
-          placeholder="Número de celular"
-          class="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-      </div>
-
-      <!-- Correo -->
-      <div class="relative">
-        <span
-          class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"
-        >
-          <i class="material-icons">mail</i>
-        </span>
-        <input
-          type="email"
-          placeholder="Correo electrónico"
-          class="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-      </div>
-
-      <!-- Contraseña -->
-      <div class="relative">
-        <span
-          class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"
-        >
-          <i class="material-icons">lock</i>
-        </span>
-        <input
-          type="password"
-          placeholder="Contraseña"
-          class="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-      </div>
-
-      <!-- Confirmar contraseña -->
-      <div class="relative">
-        <span
-          class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"
-        >
-          <i class="material-icons">lock</i>
-        </span>
-        <input
-          type="password"
-          placeholder="Confirmar contraseña"
-          class="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-      </div>
-
-      <!-- Términos y condiciones -->
-      <div class="text-sm text-gray-600">
-        <p>
-          Al presionar crear cuenta, estás de acuerdo con los
-          <label class="text-red-500 cursor-pointer"
-            >términos y condiciones</label
-          >.
-        </p>
-      </div>
-
-      <!-- Botón de Crear cuenta -->
-      <button
-        type="submit"
-        class="w-full py-3 text-lg font-semibold text-white bg-red-500 rounded-lg hover:bg-red-600 transition duration-300"
-      >
-        Crear cuenta
-      </button>
-    </form>
+          Crear cuenta
+        </button>
+      </form>
+    </div>
   </div>
+
+  <!-- Toast de error, fuera del contenedor principal -->
+<div
+  *ngIf="errorToast"
+  id="toast-danger"
+  class="fixed top-6 right-6 z-50 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow-lg dark:text-gray-400 dark:bg-gray-800"
+  role="alert"
+>
+  <div class="inline-flex items-center justify-center shrink-0 w-8 h-8 text-red-500 bg-red-100 rounded-lg dark:bg-red-800 dark:text-red-200">
+    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 11.793a1 1 0 1 1-1.414 1.414L10 11.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L8.586 10 6.293 7.707a1 1 0 0 1 1.414-1.414L10 8.586l2.293-2.293a1 1 0 0 1 1.414 1.414L11.414 10l2.293 2.293Z"/>
+    </svg>
+    <span class="sr-only">Error icon</span>
+  </div>
+  <div class="ms-3 text-sm font-normal">{{ errorToast }}</div>
+  <button
+    type="button"
+    class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+    (click)="errorToast = ''"
+    aria-label="Close"
+  >
+    <span class="sr-only">Close</span>
+    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+    </svg>
+  </button>
 </div>
