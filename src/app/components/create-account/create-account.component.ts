@@ -77,6 +77,7 @@ export class CreateAccountComponent implements OnInit {
 
     this.registerService.register(data).subscribe({
       next: (res) => {
+        console.log('Usuario registrado:', res);
         this.registerService.requestEmailVerification(data.email).subscribe({
           next: () => {
             this.upload(); // Llamar a la función de carga del avatar
