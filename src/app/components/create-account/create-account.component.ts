@@ -43,6 +43,11 @@ export class CreateAccountComponent implements OnInit {
     const passwordRegex =
       /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).+$/;
 
+      if (!this.avatarFile) {
+      this.errorToast = 'No se ha seleccionado un archivo de avatar.';
+      setTimeout(() => (this.errorToast = ''), 4000);
+      return;
+    }
     if (
       !this.email ||
       !this.username ||
@@ -53,6 +58,8 @@ export class CreateAccountComponent implements OnInit {
       setTimeout(() => (this.errorToast = ''), 4000);
       return;
     }
+
+    
     if (this.password !== this.passwordConfirm) {
       this.errorToast = 'Las contraseñas no coinciden.';
       setTimeout(() => (this.errorToast = ''), 4000);
