@@ -67,7 +67,7 @@ export class LoginComponent {
     this.loginService.login(req).subscribe({
       next: (resp: AuthResponse) => {
         console.log(resp);
-        this.router.navigate(['/home'], {
+        this.router.navigate(['/home-empty'], {
           replaceUrl: true,
           state: { registerDevice: true },
         });
