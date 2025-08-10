@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
   providedIn: 'root',
 })
 export class LoginServiceService {
-  private readonly authEndpoint = `${environment.authWithPassword}/auth-with-password`;
+  private readonly authEndpoint = `${environment.authWithPassword}/users/auth-with-password`;
 
   constructor(private http: HttpClient) {}
 
