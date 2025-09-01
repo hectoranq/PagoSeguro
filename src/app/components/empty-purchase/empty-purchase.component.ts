@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-
+import { LucideAngularModule, ArrowLeft, Bell, Home, ShoppingCart, Package } from 'lucide-angular';
 @Component({
   selector: 'app-empty-purchase',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, LucideAngularModule],
   templateUrl: './empty-purchase.component.html',
   styleUrls: ['./empty-purchase.component.scss']
 })
@@ -21,4 +21,13 @@ export class EmptyPurchaseComponent {
       state: { registerDevice: true },
     });
   }
+   comprar() {
+    alert('Compra realizada!');
+  }
+
+  readonly ArrowLeft = ArrowLeft;
+  readonly Bell = Bell;
+  readonly Home = Home;
+  readonly ShoppingCart = ShoppingCart;
+  readonly Package = Package;
 }

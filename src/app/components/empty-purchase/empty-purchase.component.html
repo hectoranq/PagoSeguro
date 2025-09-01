@@ -1,80 +1,74 @@
-<div class="max-w-[375px] mx-auto h-[812px] bg-white flex flex-col overflow-hidden border border-gray-200 rounded-3xl shadow-lg">
- 
+<div class="min-h-screen bg-[#fdfdfd] flex flex-col">
   
-    <!-- Navigation Bar -->
-    <div class="px-5 py-3 flex justify-between items-center">
-      <button class="p-2">
-        <i class="lucide lucide-arrow-left"></i>
-      </button>
-      <button class="p-2">
-        <i class="lucide lucide-bell"></i>
-      </button>
+
+  <!-- Header -->
+  <div class="flex justify-between items-center px-6 py-4">
+    <!-- Arrow Left Icon -->
+    <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+    </svg>
+    
+    <!-- Bell Icon -->
+    <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5v-5zM10.07 2.82l3.5 3.5M21 21l-4.35-4.35"></path>
+    </svg>
+  </div>
+
+  <!-- Main Content -->
+  <div class="flex-1 px-6 py-8">
+    <!-- Illustration src\assets\mobile-shopping-security-illustration-with-two-wom.png -->
+    <div class="relative mb-12 h-80">
+      <img
+        src="/assets/mobile-shopping-security-illustration-with-two-wom.png"
+        alt="Secure shopping illustration"
+        class="w-full h-full object-contain"
+      />
     </div>
-  
-    <!-- Main Content -->
-    <div class="flex-1 flex flex-col items-center px-6 overflow-y-auto">
-      <!-- Illustration -->
-      <div class="relative w-full h-64 my-4">
-        <div class="absolute inset-0 bg-gray-50 rounded-3xl"></div>
-  
-        <div class="absolute inset-0 flex items-center justify-center">
-          <div class="relative w-full h-full">
-            <div class="absolute left-5 bottom-0 w-24 h-48">
-              <img
-                src="src\assets\images\inidata.png"
-                alt="Secure purchase illustration"
-                class="object-contain w-full h-full"
-              />
-            </div>
-  
-            <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-48 bg-white rounded-xl border-2 border-gray-300 flex flex-col items-center justify-center">
-              <div class="w-16 h-16 bg-red-500 rounded-lg flex items-center justify-center mb-2">
-                <i class="lucide lucide-shopping-cart text-white"></i>
-              </div>
-              <div class="w-20 h-2 bg-gray-200 rounded-full mb-1"></div>
-              <div class="w-16 h-2 bg-gray-200 rounded-full mb-1"></div>
-              <div class="w-12 h-2 bg-gray-200 rounded-full mb-3"></div>
-              <div class="w-16 h-6 bg-red-500 rounded-full"></div>
-            </div>
-  
-            <div class="absolute left-12 top-10 w-8 h-8 bg-white rounded-full flex items-center justify-center border border-gray-200">
-              <i class="lucide lucide-more-horizontal"></i>
-            </div>
-            <div class="absolute right-12 top-16 w-8 h-8 bg-white rounded-full flex items-center justify-center border border-gray-200">
-              <i class="lucide lucide-help-circle"></i>
-            </div>
-  
-            <div class="absolute right-5 bottom-0 w-24 h-48"></div>
-          </div>
-        </div>
-      </div>
-  
-      <h1 class="text-2xl font-bold text-center mt-4 mb-4">Nos aseguramos de tu compra segura</h1>
-  
-      <p class="text-gray-500 text-center mb-8">
-        Mediante nuestro sistema, nosotros cuidamos tu dinero. Cuando realices una compra, el pago al vendedor se
-        realiza cuando nos confirmes que te llegó el producto deseado, así evitas estafas y nos aseguramos de tu
-        compra segura!. En caso de que no te llegue el producto, te haremos la devolución de tu dinero.
-      </p>
-  
-      <button class="px-10 py-3 border-2 border-red-500 text-red-500 rounded-full font-medium mb-8" (click)="doPurchase()">
+
+    <!-- Title -->
+    <h1 class="text-[#000000] text-3xl font-bold text-center mb-8 leading-tight">
+      Nos aseguramos de tu compra segura
+    </h1>
+
+    <!-- Description -->
+    <p class="text-[#a8a8a9] text-base leading-relaxed text-center mb-12 px-2">
+      Mediante nuestro sistema, nosotros cuidamos tu dinero. Cuando realices una compra, el pago al vendedor se
+      realiza cuando nos confirmes que te llegó el producto deseado, así evitas estafas y nos aseguramos de tu compra
+      segura!. En caso de que no te llegue el producto, te haremos la devolución de tu dinero.
+    </p>
+
+    <!-- Buy Button -->
+    <div class="flex justify-center mb-16">
+      <button
+        (click)="doPurchase()"
+        class="bg-[#f83758] text-white px-12 py-4 rounded-lg text-lg font-medium border-2 border-[#f83758] hover:bg-[#eb3030] transition-colors"
+      >
         Comprar
       </button>
     </div>
-  
-    <!-- Bottom Navigation -->
-    <div class="flex justify-around items-center py-4 border-t border-gray-200">
-      <a href="#" class="flex flex-col items-center text-red-500">
-        <i class="lucide lucide-home"></i>
-        <span class="text-xs mt-1">Inicio</span>
-      </a>
-      <a href="#" class="flex flex-col items-center text-gray-400">
-        <i class="lucide lucide-shopping-cart"></i>
-      </a>
-      <a href="#" class="flex flex-col items-center text-gray-400">
-        <i class="lucide lucide-package"></i>
-        <span class="text-xs mt-1">En Proceso</span>
-      </a>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <div class="flex justify-around items-center py-4 px-6 bg-[#ffffff] border-t border-[#ebebeb]">
+    <div class="flex flex-col items-center">
+      <!-- Home Icon -->
+      <svg class="w-6 h-6 text-[#f83758] mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+      </svg>
+      <span class="text-[#f83758] text-sm font-medium">Inicio</span>
+    </div>
+    <div class="flex flex-col items-center">
+      <!-- Shopping Cart Icon -->
+      <svg class="w-6 h-6 text-[#000000] mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m1.6 10L9 5m11 8a2 2 0 11-4 0 2 2 0 014 0zm-10 0a2 2 0 11-4 0 2 2 0 014 0z"></path>
+      </svg>
+    </div>
+    <div class="flex flex-col items-center">
+      <!-- Package Icon -->
+      <svg class="w-6 h-6 text-[#000000] mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10"></path>
+      </svg>
+      <span class="text-[#000000] text-sm">En Proceso</span>
     </div>
   </div>
-  
+</div>
