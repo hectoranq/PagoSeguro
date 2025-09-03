@@ -13,11 +13,13 @@
         <div class="relative flex justify-center text-center">
         <div
           class="w-48 rounded-lg bg-gray-200 border border-gray-300 flex flex-col justify-center items-center p-4"
+          (click)="triggerFileInput()"
         >
           <img
             [src]="avatarPreview || '../../../assets/images/user_profile.png'"
             alt="Avatar"
             class="w-16 h-auto flex justify-center mb-2"
+            (click)="triggerFileInput()"
           />
           <label class="flex justify-center cursor-pointer">
             Cargar foto de perfil

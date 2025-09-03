@@ -43,7 +43,7 @@ export class CreateAccountComponent implements OnInit {
     const passwordRegex =
       /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).+$/;
 
-      if (!this.avatarFile) {
+    if (!this.avatarFile) {
       this.errorToast = 'No se ha seleccionado un archivo de avatar.';
       setTimeout(() => (this.errorToast = ''), 4000);
       return;
@@ -59,7 +59,6 @@ export class CreateAccountComponent implements OnInit {
       return;
     }
 
-    
     if (this.password !== this.passwordConfirm) {
       this.errorToast = 'Las contraseñas no coinciden.';
       setTimeout(() => (this.errorToast = ''), 4000);
@@ -150,5 +149,9 @@ export class CreateAccountComponent implements OnInit {
           // Manejo de errores en la UI
         },
       });
+  }
+
+  triggerFileInput() {
+    this.fileInput.nativeElement.click();
   }
 }
