@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LucideAngularModule } from 'lucide-angular';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-purchase-data-form',
   standalone: true,
@@ -9,8 +11,12 @@ import { LucideAngularModule } from 'lucide-angular';
   styleUrls: ['./purchase-data-form.component.scss']
 })
 export class PurchaseDataFormComponent {
+  constructor(private router: Router) {}
 
   siguiente() {
-    alert('Formulario enviado');
+    this.router.navigate(['/confirm-payment'], {
+      replaceUrl: true,
+      state: { registerDevice: true },
+    });
   }
 }
