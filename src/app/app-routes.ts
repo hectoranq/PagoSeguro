@@ -5,7 +5,9 @@ import { PasswordComponent } from './components/password/password.component';
 import { OtpComponent } from './components/otp/otp.component';
 import { HomeComponent } from './components/home/home.component';
 import { EmptyPurchaseComponent } from './components/empty-purchase/empty-purchase.component';
+
 import { PurchaseDataFormComponent } from './components/purchase-data-form/purchase-data-form.component';
+import { ConfirmPaymentComponent } from './components/confirm-payment/confirm-payment.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -16,5 +18,6 @@ export const routes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'home-empty', component: EmptyPurchaseComponent },
     { path: 'purchase-data', component: PurchaseDataFormComponent },
+  { path: 'confirm-payment', component: ConfirmPaymentComponent },
     
   ];
